@@ -3,10 +3,20 @@ title: Replication files for "Spectral estimation of large stochastic blockmodel
   with discrete nodal covariates"
 author: "Angelo Mele"
 output:
-  pdf_document: default
   html_document:
     df_print: paged
+  pdf_document: default
 ---
+
+# Package installation
+
+To run this code you need to install the `grdpg` package from Github.
+
+```{r}
+library(devtools)
+install_github("/meleangelo/grdpg")
+```
+
 # Examples
 The examples in the text are generated with the file
 
