@@ -524,7 +524,8 @@ for (ii in 1:100){
   print(results[[ii]]$result_true$betahats[[1]][1])
 }
 
-
+load("VarianceMC.RData")
+load("VarianceMC_n10000.RData")
 # make table with all MC results (betas and std devs)
 table <- matrix(NA, ncol = 12, nrow = nsim)
 
@@ -532,8 +533,8 @@ for (i in 1:nsim){
   result_true <- results[[i]]$result_true
   betahat_true <- sapply(result_true$betahats, mean)
   betahat_true_unbiased <- betahat_true - sapply(result_true$bias, mean)
-  var_true <- sapply(result_true$sd2s, mean)/n
-  sd_true <- sqrt(var_true)/n
+  var_true <- sapply(result_true$sd2s, mean)/(n^2)/length(result_true$betahats[[1]])
+  sd_true <- sqrt(var_true)
   print(betahat_true)
   betahat_true_unbiased
   sd_true
